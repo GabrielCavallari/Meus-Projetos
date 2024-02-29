@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio das mensagens</title>
+    <style>
+        body {
+            font: normal 20pt Arial;
+        }
+        button {
+            font: normal 25pt Arial;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desafio das Mensagens</h1>
+    <button id="b1">Botão 1</button>
+    <button id="b2">Botão 2 </button>
+    <button id="b3">Botão 3</button>
+    <script>
+
+        const botao1 = document.getElementById('b1')
+        const botao2 = document.getElementById('b2')
+        const botao3 = document.getElementById('b3')
+        
+        botao1.addEventListener('click', function() {
+            exibirMensagem('Este é o botão 1')
+        })
+
+        botao2.addEventListener('click', function() {
+            exibirMensagem('Este é o botão 2')
+        })
+
+        botao3.addEventListener('click', function() {
+            exibirMensagem('Este é o botão 3')
+        })
+
+        function exibirMensagem(mensagem) {
+            alert(mensagem)
+        }
+
+        
+    </script>
+</body>
+</html>
