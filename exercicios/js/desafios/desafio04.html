@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 04</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .caixa {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="caixa">
+        <h1>Calculando o Troco</h1>
+        <input type="button" value="Comprar produto" onclick="iniciar()">
+    </div>
+
+    <script>
+    
+    function iniciar() {
+        var produto
+        var preco
+        var troco
+    
+        produto = prompt('Qual produto você está comprando?')
+        if (produto === null || produto.trim() === "") {    // produto.trim() - remover espaços em branco no início e no final de uma string e == "" verficia caso o usuario digite apenas espaços
+            alert("Você cancelou a operação ou não inseriu um produto válido.")
+            return
+        }
+    
+        preco = prompt(`Quanto custa o ${produto} que você está comprando?`)
+        preco = Number(preco)
+        if (preco === null || preco === 0 || isNaN(preco)) { // isNaN - é usado para verificar se um valor não é um número. Retorna TRUE se não for um numero e FALSE se for
+            alert("Preço inválido. Certifique-se de inserir um valor numérico maior que zero.")
+            return
+        }
+    
+        troco = prompt(`Qual foi o valor que você deu para pagar o ${produto}`)
+        troco = Number(troco)
+        if (troco === null || troco === 0 || isNaN(troco)) {
+            alert("Valor de pagamento inválido. Certifique-se de inserir um valor numérico maior que zero.")
+            return
+        }
+    
+        if (troco >= preco) {   
+            var valorTroco = troco - preco
+            alert(`Você comprou ${produto} que custou R$${preco}.
+Deu R$${troco} em dinheiro e vai receber R$${valorTroco} de troco.
+Volte Sempre!`)
+        } else {
+            alert(`Você não deu dinheiro suficiente para comprar o ${produto}.
+Sai fora caloteiro!!`)
+        }
+    }
+    
+    </script>
+</body>
+</html>
