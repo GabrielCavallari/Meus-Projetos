@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 05</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        #res {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="button"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Medidas</h1>
+
+    <input type="button" value="Converter" onclick="calcular()">
+    <p>Clique no botão acima para iniciar</p>
+
+    <div id="res"></div>
+
+    <script>
+        // Armazenando referência ao elemento de resultado para evitar pesquisas repetidas no DOM
+        var res = document.getElementById('res')
+
+        function calcular() {
+            var metros
+
+            metros = prompt("Digite uma distância em metros (m)")
+
+            // Verificando se a entrada é inválida (null, vazia ou não é um número)
+            if (metros == null || metros.trim() == "" || isNaN(metros)) {
+                alert("Você cancelou a operação ou inseriu um valor inválido")
+                return
+            }
+            
+            metros = Number(metros)
+
+            // Utilizando constantes para os fatores de conversão
+            const fatorKm = 1000
+            const fatorHm = 100
+            const fatorDam = 10
+            const fatorDm = 10
+            const fatorCm = 100
+            const fatorMm = 1000
+
+            // Criando uma string com o conteúdo desejado antes de atribuir ao innerHTML
+            var resultadoHTML = `<h2>A distância de ${metros} metros, corresponde a:</h2>`
+            resultadoHTML += `<p>${metros / fatorKm} (km)</p>`
+            resultadoHTML += `<p>${metros / fatorHm} (hm)</p>`
+            resultadoHTML += `<p>${metros / fatorDam} (dam)</p>`
+            resultadoHTML += `<p>${metros * fatorDm} (dm)</p>`
+            resultadoHTML += `<p>${metros * fatorCm} (cm)</p>`
+            resultadoHTML += `<p>${metros * fatorMm} (mm)</p>`
+
+            // Atribuindo a string completa ao innerHTML de uma vez
+            res.innerHTML = resultadoHTML
+        }
+    </script>
+</body>
+</html>
